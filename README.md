@@ -1,4 +1,4 @@
-# epolish.github.io (short description of projects)
+# epolish.github.io (shortcut)
 
 ### Design:
    * Used technology - Flash, Photoshop, Illustrator, 3d Max
