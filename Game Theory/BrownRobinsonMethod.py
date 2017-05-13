@@ -1,76 +1,51 @@
-# -*- coding: utf-8 -*
-# подключем модуль numpy с математическими операциями над матрицами
 import numpy as np
 
-# определяем точку входа в программу
-def главная_функция():
-    #  np.array - создаем экземпляр класса numpy.array [массив с дополнительными свойствами]
-    платежная_матрица = np.array([
+def main():
+    pay_matrix = np.array([
         [6, 1, 4],
         [2, 4, 2],
         [4, 3, 5]
     ])
-    # присваиваем переменной результат работы функции-алгоритма с заданными параметрами
-    результат = метод_брауна_робинсона(
-        платежная_матрица,
-        количество_итераций=20,
-        номер_начальной_стратегии=0,
-        вывод_итераций=True
+    rezult = brown_robinson(pay_matrix, print_iterations=True)
+    print(
+        '\nGame price: W =', rezult['game_price'],
+        '\nPlayer A optimal mixed strategy: P =', rezult['player_a_optimal_mixed_strategy'],
+        '\nPlayer B optimal mixed strategy B: Q =', rezult['player_b_optimal_mixed_strategy']
     )
-    # print - функция вывода данных в поток [консоль]
-    print('\nЦена игры: W =', результат['цена_игры'])
-    print('Оптимальная смешанная стратегия игрока A: P =', результат['оптимальная_смешанная_стратегия_игрока_a'])
-    print('Оптимальная смешанная стратегия игрока B: Q =', результат['оптимальная_смешанная_стратегия_игрока_b'])
 
-# функция которая реализует алгоритм Брауна-Робинсона
-def метод_брауна_робинсона(платежная_матрица, количество_итераций=20, номер_начальной_стратегии=0, вывод_итераций=False):
-    степень_округления = 2
-    номер_текущей_стратегии_игрока_a = номер_начальной_стратегии
-    # np.argmin - получаем индекс минимального елемента массива
-    номер_текущей_стратегии_игрока_b = платежная_матрица[номер_текущей_стратегии_игрока_a].argmin()
-    смешанные_стратегии_игрока_a = np.array(платежная_матрица[номер_текущей_стратегии_игрока_a])
-    # [:,i] - получаем столбец из матрицы по индексу i
-    смешанные_стратегии_игрока_b = np.array(платежная_матрица[:,номер_текущей_стратегии_игрока_b])
-    # np.zeros - создаем массив заполненный нулями размером len(matrix)
-    # len - функция, возвращающая длину массива
-    частота_выбора_стратегий_игрока_a = np.zeros(len(платежная_матрица))
-    частота_выбора_стратегий_игрока_b = np.zeros(len(платежная_матрица[0]))  
+def brown_robinson(pay_matrix, iterations=20, start_strategy=0, print_iterations=False):
+    round_step = 2
+    player_a_current_strategy_number = start_strategy
+    player_b_current_strategy_number = pay_matrix[player_a_current_strategy_number].argmin()
+    player_a_mixed_strategy = np.array(pay_matrix[player_a_current_strategy_number])
+    player_b_mixed_strategy = np.array(pay_matrix[:, player_b_current_strategy_number])
+    player_a_strategy_choose_frequency = np.zeros(len(pay_matrix))
+    player_b_strategy_choose_frequency = np.zeros(len(pay_matrix[0]))  
     
-    # range - функция, возвращающая последовательность чисел от n до m с шагом s
-    for номер_итерации in range(1, количество_итераций+1):
-        частота_выбора_стратегий_игрока_a[номер_текущей_стратегии_игрока_a] += 1
-        частота_выбора_стратегий_игрока_b[номер_текущей_стратегии_игрока_b] += 1
-        # min - функция, возвращающая минимальный елемент массива
-        нижняя_оценка_игры = min(смешанные_стратегии_игрока_a)/номер_итерации
-        # max - функция, возвращающая максимальный елемент массива
-        верхняя_оценка_игры = max(смешанные_стратегии_игрока_b)/номер_итерации
-        if вывод_итераций:
+    for i in range(1, iterations + 1):
+        player_a_strategy_choose_frequency[player_a_current_strategy_number] += 1
+        player_b_strategy_choose_frequency[player_b_current_strategy_number] += 1
+        lower_game_price = min(player_a_mixed_strategy) / i
+        upper_game_price = max(player_b_mixed_strategy) / i
+        if print_iterations:
             print(
-                номер_итерации,
-                номер_текущей_стратегии_игрока_a+1,
-                смешанные_стратегии_игрока_a,
-                номер_текущей_стратегии_игрока_b+1,
-                смешанные_стратегии_игрока_b,
-                # round - функция, округляющая число до заданной степени
-                round(нижняя_оценка_игры, степень_округления),
-                round(верхняя_оценка_игры, степень_округления),
-                round((нижняя_оценка_игры+верхняя_оценка_игры)/2, степень_округления),
-                # sep - параметр, задающий разделитель вывода в консоли
+                i,
+                player_a_current_strategy_number + 1, player_a_mixed_strategy,
+                player_b_current_strategy_number + 1, player_b_mixed_strategy,
+                round(lower_game_price, round_step), round(upper_game_price, round_step),
+                round((lower_game_price + upper_game_price) / 2, round_step),
                 sep=' | '
             )
-        # np.argmax - получаем индекс максимального елемента массива
-        номер_текущей_стратегии_игрока_a = смешанные_стратегии_игрока_b.argmax()
-        смешанные_стратегии_игрока_a += платежная_матрица[номер_текущей_стратегии_игрока_a]
-        номер_текущей_стратегии_игрока_b = смешанные_стратегии_игрока_a.argmin()
-        смешанные_стратегии_игрока_b += платежная_матрица[:,номер_текущей_стратегии_игрока_b]
-    
-    # возвращаем ассоциативный массив [словарь]
+        player_a_current_strategy_number = player_b_mixed_strategy.argmax()
+        player_a_mixed_strategy += pay_matrix[player_a_current_strategy_number]
+        player_b_current_strategy_number = player_a_mixed_strategy.argmin()
+        player_b_mixed_strategy += pay_matrix[:, player_b_current_strategy_number]
+        
     return {
-        'цена_игры': (нижняя_оценка_игры+верхняя_оценка_игры)/2,
-        # делим каждый елемент массива на число [перегруженный оператор деления /]
-        'оптимальная_смешанная_стратегия_игрока_a': частота_выбора_стратегий_игрока_a/количество_итераций,
-        'оптимальная_смешанная_стратегия_игрока_b': частота_выбора_стратегий_игрока_b/количество_итераций
+        'game_price': (lower_game_price + upper_game_price) / 2,
+        'player_a_optimal_mixed_strategy': player_a_strategy_choose_frequency / iterations,
+        'player_b_optimal_mixed_strategy': player_b_strategy_choose_frequency / iterations
     }
 
-# вызываем точку входа
-главная_функция()
+if __name__ == '__main__':
+    main()
