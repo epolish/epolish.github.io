@@ -1,0 +1,11 @@
+.main {
+    margin-top: 6%;
+}
+.saddlePoint{
+    color: red;
+}
+@media (max-width: 768px) {
+    .main {
+        margin-top: 15%;
+    }
+}

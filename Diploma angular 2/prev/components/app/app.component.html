@@ -1,0 +1,115 @@
+<div class="row main">
+    <div class="col-sm-6 col-md-6">
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div class="form-group">
+                    <label for="income">Доход от одного квеста в ₴</label>
+                    <input [(ngModel)]="income" id="income" type="number" class="form-control" placeholder="999" min="0" max="9999">
+                </div>
+                <div class="form-group">
+                    <label for="monthPrice">Затраты (месяц) в ₴</label>
+                    <input [(ngModel)]="monthPrice" id="monthPrice" type="number" class="form-control" placeholder="30" min="0" max="9999">
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="form-group">
+                    <label for="quest">Колличество квестов в шт.</label>
+                    <select [(ngModel)]="quest" class="form-control">
+                        <option [ngValue]="item" *ngFor="let item of questCollection">
+                            {{item.city}} - {{item.count}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="helpPercent">% за помощь</label>
+                    <input [(ngModel)]="helpPercent" id="helpPercent" type="number" class="form-control" placeholder="15" min="0" max="100">
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="form-group">
+                    <label for="hostingPrice">Цена за хостинг (месяц) в ₴</label>
+                    <input [(ngModel)]="hostingPrice" id="hostingPrice" type="number" class="form-control" placeholder="999" min="0" max="9999">
+                </div>
+                <div class="form-group">
+                    <label for="neutralityPercent">% за нейтральность</label>
+                    <input [(ngModel)]="neutralityPercent" id="neutralityPercent" type="number" class="form-control" placeholder="10" min="0" max="100">
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="form-group">
+                    <label for="domenPrice">Цена за домен (год) в ₴</label>
+                    <input [(ngModel)]="domenPrice" id="domenPrice" type="number" class="form-control" placeholder="999" min="0" max="9999">
+                </div>
+                <div class="form-group">
+                    <label for="warPercent">% за враждование</label>
+                    <input [(ngModel)]="warPercent" id="warPercent" type="number" class="form-control" placeholder="30" min="0" max="100">
+                </div>
+            </div>
+        </div>
+        <style>.saddlePoint{color: red;}</style>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h4>{{quest.city}}</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Стратегия</th>
+                            <th *ngFor="let item of labelB;">B - {{item}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let items of payMatrix; let i = index">
+                            <th>A - {{labelA[i]}}</th>
+                            <td *ngFor="let item of items" [class.danger]="item==saddlePoint">{{item}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-10 col-md-offset-10 col-sm-2 col-md-2">
+                <button (click)="getResult()" type="button" class="btn btn-primary btn-md">Результат</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h3>Цена Игры: <span *ngIf="saddlePoint">{{saddlePoint}}</span></h3>
+                <div *ngIf="strategies">
+                    <hr>
+                    <h5>Смешанные стратегии:</h5>
+                    <h5 *ngIf="strategies[0]">
+                         Игрока <strong>А</strong>: 
+                        <strong *ngFor="let item of strategies[0]"> ({{item}}) </strong>
+                    </h5>
+                    <h5 *ngIf="strategies[1]">
+                        Игрока <strong>B</strong>: 
+                        <strong *ngFor="let item of strategies[1]"> ({{item}}) </strong>
+                    </h5>
+                </div>
+                <table *ngIf="newPayMatrix" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Стратегия</th>
+                            <th *ngFor="let item of labelB; let i = index">
+                                B - {{labelB[payMatrix[0].indexOf(newPayMatrix[0][i])]}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let items of newPayMatrix; let i = index">
+                            <th>A - {{labelA[tempMatrix[0].indexOf(newPayMatrix[i][0])]}}</th>
+                            <td *ngFor="let item of items" [class.danger]="item==saddlePoint">{{item}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-sm-12 col-md-12">
+                <graphics [data]='strategies'></graphics>
+            </div>
+        </div>-->
+    </div>
+</div>
