@@ -19,15 +19,15 @@
     * Project description - Brown-Robinson method
     
 ### Magento:
-    * Used tecnology - PHP, Magento 1, JavaScript, JQuery
-    * Project description:
-        * 1) ApiCompany - imports data to database from other source throw SOAP
-        * 2) ApiExtended - creates SOAP service
-        * 3) CalendarEvents - integrates jquery-calendar in template, and creates admin configuration
-        * 4) Company - adds new entity (company) and create configuration in magento admin
-        * 5) Discount - implements flexible discount strategy
-        * 6) StoreRestriction - adds additional restrict logic to store
-    * Additional info - all steps on this link - https://bitbucket.org/polish1996/webinse_intern
+   * Used tecnology - PHP, Magento 1, JavaScript, JQuery
+   * Project description:
+      * 1) ApiCompany - imports data to database from other source throw SOAP
+      * 2) ApiExtended - creates SOAP service
+      * 3) CalendarEvents - integrates jquery-calendar in template, and creates admin configuration
+      * 4) Company - adds new entity (company) and create configuration in magento admin
+      * 5) Discount - implements flexible discount strategy
+      * 6) StoreRestriction - adds additional restrict logic to store
+   * Additional info - all steps on this link - https://bitbucket.org/polish1996/webinse_intern
     
 ### Neural Network:
     * Used tecnology - Python, JavaScript
