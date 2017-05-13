@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_ApiCompany
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <modules>
+        <Webinse_ApiCompany>
+            <version>0.1.0</version>
+        </Webinse_ApiCompany>
+    </modules>
+    <global>
+        <helpers>
+            <webinse_apicompany>
+                <class>Webinse_ApiCompany_Helper</class>
+            </webinse_apicompany>
+        </helpers>
+        <models>
+            <webinse_apicompany>
+                <class>Webinse_ApiCompany_Model</class>
+            </webinse_apicompany>
+        </models>
+        <resources>
+            <apicompany_setup>
+                <setup>
+                    <module>Webinse_ApiCompany</module>
+                    <class>Webinse_ApiCompany_Model_Resource_Setup</class>
+                </setup>
+            </apicompany_setup>
+        </resources>
+    </global>
+    <default>
+        <apicompany_options>
+            <general>
+                <api_user>webinse</api_user>
+                <api_key>adMin239</api_key>
+            </general>
+        </apicompany_options>
+    </default>
+    <crontab>
+        <jobs>
+            <webinse_apicompany>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>webinse_apicompany/observer::importCompaniesToMagentoApp</model>
+                </run>
+            </webinse_apicompany>
+        </jobs>
+    </crontab>
+</config>

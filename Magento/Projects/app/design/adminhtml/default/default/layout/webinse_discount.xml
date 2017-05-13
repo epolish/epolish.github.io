@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Layout for backend
+ *
+ * @category    Webinse
+ * @package     Webinse_Discount
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<layout>
+    <adminhtml_discount_index>
+        <reference name="content">
+            <block type="webinse_discount/adminhtml_discount" name="discount"></block>
+        </reference>
+    </adminhtml_discount_index>
+    <adminhtml_discount_new>
+        <reference name="head">
+            <action method="addJs">
+                <script>webinse/discount/app.js</script>
+            </action>
+        </reference>
+    </adminhtml_discount_new>
+    <adminhtml_discount_edit>
+        <reference name="head">
+            <action method="addJs">
+                <script>webinse/discount/app.js</script>
+            </action>
+        </reference>
+    </adminhtml_discount_edit>
+</layout>

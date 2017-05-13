@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_CalendarEvents
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<widgets>
+    <webinse_calendarevents_widget type="webinse_calendarevents/widget" translate="name description" module="webinse_calendarevents">
+        <name>Webinse Calendar Events</name>
+        <description>Show small calendar widget</description>
+        <parameters>
+            <background translate="label comment">
+                <label>Calendar Background Color</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <comment>e.g "#FFFFFF"</comment>
+            </background>
+            <background_current translate="label comment">
+                <label>Current Day Background Color</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <comment>e.g "#FFFFFF"</comment>
+            </background_current>
+            <text_color translate="label comment">
+                <label>Text Color</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <comment>e.g "#FFFFFF"</comment>
+            </text_color>
+            <text_size translate="label comment">
+                <label>Text Size</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <comment>in percentage</comment>
+            </text_size>
+            <text_font translate="label">
+                <label>Text Font</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>webinse_calendarevents/system_config_source_design_textFonts</source_model>
+            </text_font>
+        </parameters>
+    </webinse_calendarevents_widget>
+</widgets>

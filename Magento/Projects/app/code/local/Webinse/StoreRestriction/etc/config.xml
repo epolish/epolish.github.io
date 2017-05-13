@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_StoreRestriction
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <modules>
+        <Webinse_StoreRestriction>
+            <version>0.1.0</version>
+        </Webinse_StoreRestriction>
+    </modules>
+    <global>
+        <models>
+            <webinse_storerestriction>
+                <class>Webinse_StoreRestriction_Model</class>
+                <resourceModel>storerestriction_resource</resourceModel>
+            </webinse_storerestriction>
+        </models>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <webinse_storerestriction_model_observer>
+                        <type>singleton</type>
+                        <class>Webinse_StoreRestriction_Model_Observer</class>
+                        <method>update</method>
+                    </webinse_storerestriction_model_observer>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+        <helpers>
+            <webinse_storerestriction>
+                <class>Webinse_StoreRestriction_Helper</class>
+            </webinse_storerestriction>
+        </helpers>
+    </global>
+</config>

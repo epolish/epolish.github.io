@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Adminhtml config of module
+ *
+ * @category    Webinse
+ * @package     Webinse_Company
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <menu>
+        <webinse_company translate="title" module="webinse_company">
+            <title>Companies</title>
+            <sort_order>40</sort_order>
+            <children>
+                <company translate="title" module="webinse_company">
+                    <title>Manage Companies</title>
+                    <action>adminhtml/company/index</action>
+                    <sort_order>1</sort_order>
+                </company>
+            </children>
+        </webinse_company>
+    </menu>
+</config>

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_StoreRestriction
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <tabs>
+        <storerestriction_config translate="label" module="webinse_storerestriction">
+            <label>Webinse</label>
+            <sort_order>150</sort_order>
+        </storerestriction_config>
+    </tabs>
+    <sections>
+        <storerestriction_options translate="label" module="adminhtml">
+            <label>Store Restriction</label>
+            <tab>storerestriction_config</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <module_enabled translate="label">
+                            <label>Enabled: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </module_enabled>
+                        <stores translate="label">
+                            <label>Restricted Store</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>core/resource_store_collection</source_model>
+                        </stores>
+                        <stores_error_message translate="label">
+                            <label>Restricted Store Error Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </stores_error_message>
+                        <customer_groups translate="label">
+                            <label>Allowed Customer Groups</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>customer/resource_group_collection</source_model>
+                        </customer_groups>
+                        <customer_groups_error_message translate="label">
+                            <label>Restricted Customer Group Error Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_groups_error_message>
+                    </fields>
+                </general>
+            </groups>
+        </storerestriction_options>
+    </sections>
+</config>

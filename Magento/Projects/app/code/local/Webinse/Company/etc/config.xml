@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_Company
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <modules>
+        <Webinse_Company>
+            <version>0.3.0</version>
+        </Webinse_Company>
+    </modules>
+    <global>
+        <models>
+            <webinse_company>
+                <class>Webinse_Company_Model</class>
+                <resourceModel>webinse_company_resource</resourceModel>
+            </webinse_company>
+            <webinse_company_resource>
+                <class>Webinse_Company_Model_Resource</class>
+                <entities>
+                    <company>
+                        <table>webinse_company</table>
+                    </company>
+                    <addresses>
+                        <table>webinse_addresses</table>
+                    </addresses>
+                </entities>
+            </webinse_company_resource>
+        </models>
+        <resources>
+            <company_setup>
+                <setup>
+                    <module>Webinse_Company</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </company_setup>
+        </resources>
+        <blocks>
+            <webinse_company>
+                <class>Webinse_Company_Block</class>
+            </webinse_company>
+        </blocks>
+        <helpers>
+            <webinse_company>
+                <class>Webinse_Company_Helper</class>
+            </webinse_company>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <company>
+                <use>standard</use>
+                <args>
+                    <module>Webinse_Company</module>
+                    <frontName>companies</frontName>
+                </args>
+            </company>
+        </routers>
+        <layout>
+            <updates>
+                <webinse_company>
+                    <file>webinse_company.xml</file>
+                </webinse_company>
+            </updates>
+        </layout>
+        <events>
+            <customer_save_before>
+                <observers>
+                    <webinse_company_customer_save_before>
+                        <type>singleton</type>
+                        <class>Webinse_Company_Model_Observer</class>
+                        <method>customerSaveBefore</method>
+                    </webinse_company_customer_save_before>
+                </observers>
+            </customer_save_before>
+            <controller_action_predispatch_checkout_onepage_index>
+                <observers>
+                    <webinse_company_customer_save_before>
+                        <type>singleton</type>
+                        <class>Webinse_Company_Model_Observer</class>
+                        <method>checkoutOnepage</method>
+                    </webinse_company_customer_save_before>
+                </observers>
+            </controller_action_predispatch_checkout_onepage_index>
+            <controller_action_predispatch_checkout_onepage_saveShippingMethod>
+                <observers>
+                    <webinse_company_customer_save_before>
+                        <type>singleton</type>
+                        <class>Webinse_Company_Model_Observer</class>
+                        <method>saveShippingMethod</method>
+                    </webinse_company_customer_save_before>
+                </observers>
+            </controller_action_predispatch_checkout_onepage_saveShippingMethod>
+        </events>
+    </frontend>
+    <adminhtml>
+        <events>
+            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <customgrid_column_append>
+                        <type>model</type>
+                        <class>Webinse_Company_Model_Observer</class>
+                        <method>appendCompanyIdColumn</method>
+                    </customgrid_column_append>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+        </events>
+        <layout>
+            <updates>
+                <webinse_company>
+                    <file>webinse_company.xml</file>
+                </webinse_company>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <webinse_company before="Mage_Adminhtml">Webinse_Company_Adminhtml</webinse_company>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

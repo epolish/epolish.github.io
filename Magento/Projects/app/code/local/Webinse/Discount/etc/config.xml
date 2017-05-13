@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_Discount
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <modules>
+        <Webinse_Discount>
+            <version>0.1.0</version>
+        </Webinse_Discount>
+    </modules>
+    <global>
+        <models>
+            <webinse_discount>
+                <class>Webinse_Discount_Model</class>
+                <resourceModel>webinse_discount_resource</resourceModel>
+            </webinse_discount>
+            <webinse_discount_resource>
+                <class>Webinse_Discount_Model_Resource</class>
+                <entities>
+                    <discount>
+                        <table>webinse_discount</table>
+                    </discount>
+                </entities>
+            </webinse_discount_resource>
+        </models>
+        <resources>
+            <discount_setup>
+                <setup>
+                    <module>Webinse_Discount</module>
+                    <class>Webinse_Discount_Model_Resource_Setup</class>
+                </setup>
+            </discount_setup>
+        </resources>
+        <blocks>
+            <webinse_discount>
+                <class>Webinse_Discount_Block</class>
+            </webinse_discount>
+        </blocks>
+        <helpers>
+            <webinse_discount>
+                <class>Webinse_Discount_Helper</class>
+            </webinse_discount>
+        </helpers>
+    </global>
+    <frontend>
+        <events>
+            <catalog_product_get_final_price>
+                <observers>
+                    <webinse_discount>
+                        <type>singleton</type>
+                        <class>Webinse_Discount_Model_Observer</class>
+                        <method>changePrice</method>
+                    </webinse_discount>
+                </observers>
+            </catalog_product_get_final_price>
+            <catalog_product_prepare_index_select>
+                <observers>
+                    <webinse_discount>
+                        <type>singleton</type>
+                        <class>Webinse_Discount_Model_Observer</class>
+                        <method>changePrice</method>
+                    </webinse_discount>
+                </observers>
+            </catalog_product_prepare_index_select>
+        </events>
+    </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <webinse_discount>
+                    <file>webinse_discount.xml</file>
+                </webinse_discount>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <webinse_discount before="Mage_Adminhtml">Webinse_Discount_Adminhtml</webinse_discount>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

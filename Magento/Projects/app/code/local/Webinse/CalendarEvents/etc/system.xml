@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_CalendarEvents
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <tabs>
+        <calendarevents_config translate="label" module="webinse_calendarevents">
+            <label>Webinse</label>
+            <sort_order>150</sort_order>
+        </calendarevents_config>
+    </tabs>
+    <sections>
+        <calendarevents_options translate="label" module="adminhtml">
+            <label>Calendar Events</label>
+            <tab>calendarevents_config</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <day_length translate="label">
+                            <label>Length of the day name: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>webinse_calendarevents/system_config_source_general_dayNames</source_model>
+                        </day_length>
+                        <cell_size translate="label">
+                            <label>Calendar cell size: </label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cell_size>
+                        <prev_month translate="label comment">
+                            <label>Number of the prev month(s): </label>
+                            <comment>count of months, that are allowed to move back in calendar</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </prev_month>
+                        <next_month translate="label comment">
+                            <label>Number of the next month(s): </label>
+                            <comment>count of months, that are allowed to move next in calendar</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </next_month>
+                    </fields>
+                </general>
+                <email translate="label">
+                    <label>Email Notification</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <sender translate="label">
+                            <label>Sender: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>webinse_calendarevents/system_config_source_email_transEmails</source_model>
+                        </sender>
+                        <recepient_email translate="label">
+                            <label>Recepient Email: </label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-email required-entry</validate>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </recepient_email>
+                        <recepient_name translate="label">
+                            <label>Recepient Name: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </recepient_name>
+                        <email_subject translate="label">
+                            <label>Email Subject: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email_subject>
+                        <email_template translate="label">
+                            <label>Email Template: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                        </email_template>
+                    </fields>
+                </email>
+                <design translate="label">
+                    <label>Calendar Design</label>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <background translate="label comment">
+                            <label>Calendar Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>e.g "#FFFFFF"</comment>
+                        </background>
+                        <background_current translate="label comment">
+                            <label>Current Day Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>e.g "#FFFFFF"</comment>
+                        </background_current>
+                        <text_color translate="label comment">
+                            <label>Text Color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>e.g "#FFFFFF"</comment>
+                        </text_color>
+                        <text_size translate="label comment">
+                            <label>Text Size</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>in percentage</comment>
+                        </text_size>
+                        <text_font translate="label">
+                            <label>Text Font</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>webinse_calendarevents/system_config_source_design_textFonts</source_model>
+                        </text_font>
+                    </fields>
+                </design>
+            </groups>
+        </calendarevents_options>
+    </sections>
+</config>

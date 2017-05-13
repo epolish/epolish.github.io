@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_ApiExtended
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <api>
+        <resources>
+            <apiextended_company translate="title" module="webinse_apiextended">
+                <model>webinse_apiextended/company_api</model>
+                <title>Company API</title>
+                <acl>apiextended/company</acl>
+                <methods>
+                    <list translate="title" module="webinse_apiextended">
+                        <title>List of companies</title>
+                        <method>items</method>
+                        <acl>company/list</acl>
+                    </list>
+                </methods>
+                <faults module="webinse_apiextended">
+                    <data_invalid>
+                        <code>100</code>
+                        <message>Invalid company data. Details in error message.</message>
+                    </data_invalid>
+                </faults>
+            </apiextended_company>
+        </resources>
+        <resources_alias>
+            <company>apiextended_company</company>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <company>apiextendedCompany</company>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <apiextended translate="title" module="webinse_apiextended">
+                    <title>Companies</title>
+                    <sort_order>5</sort_order>
+                    <company translate="title" module="webinse_apiextended">
+                        <title>Companies data</title>
+                    </company>
+                </apiextended>
+            </resources>
+        </acl>
+    </api>
+</config>

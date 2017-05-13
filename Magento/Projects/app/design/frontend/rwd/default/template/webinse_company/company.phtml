@@ -1,0 +1,62 @@
+<?php
+/**
+ * Webinse
+ *
+ * PHP Version 5.6.23
+ *
+ * @category    Webinse
+ * @package     Webinse_Company
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+/**
+ *
+ * @category    Webinse
+ * @package     Webinse_Company
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+/**
+ * @var $this Webinse_Company_Block_Company
+ */
+?>
+<div class="box-account box-info">
+    <div class="box-head">
+        <h2>Company Information</h2>
+    </div>
+    <?php foreach ($this->getCollection() as $company): ?>
+        <div class="col2-set">
+            <div class="col-1">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>
+                            <?php echo $company->getName() ?> Contact Information
+                        </h3>
+                    </div>
+                    <div class="box-content">
+                        <p><?php echo $company->getContactName() ?><br>
+                            <?php echo $company->getOfficePhone() ?><br>
+                            <?php echo $company->getState() ?><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>Addresses</h3>
+                    </div>
+                    <div class="box-content">
+                        <p>
+                            <?php echo $company->getAddressCity() ?><br>
+                            <?php echo $company->getStreetAddress() ?><br>
+                            <?php echo $company->getStateProvince() ?><br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach ?>
+</div>

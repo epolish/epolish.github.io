@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Adminhtml config of module
+ *
+ * @category    Webinse
+ * @package     Webinse_Discount
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <menu>
+        <webinse_discount translate="title" module="webinse_discount">
+            <title>Product Discount</title>
+            <sort_order>40</sort_order>
+            <children>
+                <discount translate="title" module="webinse_discount">
+                    <title>Promotions</title>
+                    <action>adminhtml/discount/index</action>
+                    <sort_order>1</sort_order>
+                </discount>
+            </children>
+        </webinse_discount>
+    </menu>
+</config>

@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Comment for file
+ *
+ * @category	Webinse
+ * @package 	Webinse_CalendarEvents
+ * @author  	Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license 	http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <modules>
+        <Webinse_CalendarEvents>
+            <version>0.2.0</version>
+        </Webinse_CalendarEvents>
+    </modules>
+    <global>
+        <blocks>
+            <webinse_calendarevents>
+                <class>Webinse_CalendarEvents_Block</class>
+            </webinse_calendarevents>
+        </blocks>
+        <helpers>
+            <webinse_calendarevents>
+                <class>Webinse_CalendarEvents_Helper</class>
+            </webinse_calendarevents>
+        </helpers>
+        <models>
+            <webinse_calendarevents>
+                <class>Webinse_CalendarEvents_Model</class>
+                <resourceModel>calendarevents_resource</resourceModel>
+            </webinse_calendarevents>
+        </models>
+        <events>
+            <cms_page_save_after>
+                <observers>
+                    <webinse_calendarevents_prepare_save>
+                        <type>singleton</type>
+                        <class>Webinse_CalendarEvents_Model_Observer</class>
+                        <method>cmsPageSaveAfter</method>
+                    </webinse_calendarevents_prepare_save>
+                </observers>
+            </cms_page_save_after>
+            <adminhtml_cms_page_edit_tab_main_prepare_form>
+                <observers>
+                    <webinse_calendarevents_edit_tab_content>
+                        <type>singleton</type>
+                        <class>Webinse_CalendarEvents_Model_Observer</class>
+                        <method>cmsAddFields</method>
+                    </webinse_calendarevents_edit_tab_content>
+                </observers>
+            </adminhtml_cms_page_edit_tab_main_prepare_form>
+        </events>
+        <resources>
+            <data>
+                <setup>
+                    <module>Webinse_CalendarEvents</module>
+                    <class>Webinse_CalendarEvents_Model_Resource_Setup</class>
+                </setup>
+            </data>
+        </resources>
+        <template>
+            <email>
+                <webinse_calendar_events_email translate="label" module="webinse_calendarevents">
+                    <label>Webinse Calendarevents Email</label>
+                    <file>webinse_calendar_events_email.html</file>
+                    <type>html</type>
+                </webinse_calendar_events_email>
+            </email>
+        </template>
+    </global>
+    <frontend>
+        <routers>
+            <calendarevents>
+                <use>standard</use>
+                <args>
+                    <module>Webinse_CalendarEvents</module>
+                    <frontName>calendarevents</frontName>
+                </args>
+            </calendarevents>
+        </routers>
+        <layout>
+            <updates>
+                <webinse_calendarevents>
+                    <file>webinse_calendarevents.xml</file>
+                </webinse_calendarevents>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <webinse_calendarevents>
+                    <file>webinse_calendarevents.xml</file>
+                </webinse_calendarevents>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <calendarevents_options>
+            <general>
+                <day_length>0</day_length>
+                <cell_size>1</cell_size>
+                <prev_month>1</prev_month>
+                <next_month>1</next_month>
+            </general>
+            <email>
+                <email_subject>Test</email_subject>
+                <email_template>webinse_calendar_events_email</email_template>
+            </email>
+            <design>
+                <text_size>100</text_size>
+            </design>
+        </calendarevents_options>
+    </default>
+</config>

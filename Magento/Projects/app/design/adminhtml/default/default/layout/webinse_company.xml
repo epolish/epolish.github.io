@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Layout for backend
+ *
+ * @category    Webinse
+ * @package     Webinse_Company
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<layout>
+    <adminhtml_company_index>
+        <reference name="content">
+            <block type="webinse_company/adminhtml_company" name="adminhtml_company"></block>
+        </reference>
+    </adminhtml_company_index>
+    <adminhtml_company_new>
+        <update handle="adminhtml_company_edit"/>
+    </adminhtml_company_new>
+    <adminhtml_company_edit>
+        <reference name="content">
+            <block type="webinse_company/adminhtml_company_edit" name="adminhtml_company_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="webinse_company/adminhtml_company_edit_tabs" name="adminhtml_company_edit_tabs">
+                <block type="webinse_company/adminhtml_company_edit_tab_main" name="adminhtml_company_edit_tab_main"/>
+                <block type="webinse_company/adminhtml_company_edit_tab_additional" name="adminhtml_company_edit_tab_additional"/>
+                <action method="addTab">
+                    <name>adminhtml_company_edit_tab_main</name>
+                    <block>adminhtml_company_edit_tab_main</block>
+                </action>
+                <action method="addTab">
+                    <name>adminhtml_company_edit_tab_additional</name>
+                    <block>adminhtml_company_edit_tab_additional</block>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_company_edit>
+</layout>
