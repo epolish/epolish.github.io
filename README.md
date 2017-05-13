@@ -1,2 +1,2 @@
 # epolish.github.io
-Евгений Полищук
+Eugene Polischuk
