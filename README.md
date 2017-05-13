@@ -27,7 +27,7 @@
        * Company - adds new entity (company) and create configuration in magento admin
        * Discount - implements flexible discount strategy
        * StoreRestriction - adds additional restrict logic to store
-   * Additional info - all steps on this link - https://bitbucket.org/polish1996/webinse_intern
+   * Additional info - all steps on this link - <a href="https://bitbucket.org/polish1996/webinse_intern" target="_blank">https://bitbucket.org/polish1996/webinse_intern</a>
     
 ### Neural Network:
    * Used tecnology - Python, JavaScript
