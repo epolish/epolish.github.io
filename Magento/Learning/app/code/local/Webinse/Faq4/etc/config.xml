@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Main config of module
+ *
+ * @category    Webinse
+ * @package     Webinse_Faq4
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <modules>
+        <Webinse_Faq4>
+            <version>0.1.0</version>
+        </Webinse_Faq4>
+    </modules>
+    <global>
+        <models>
+            <webinse_faq4>
+                <class>Webinse_Faq4_Model</class>
+                <resourceModel>webinse_faq4_resource</resourceModel>
+            </webinse_faq4>
+            <webinse_faq4_resource>
+                <class>Webinse_Faq4_Model_Resource</class>
+                <entities>
+                    <faq>
+                        <table>webinse_faq4</table>
+                    </faq>
+                </entities>
+            </webinse_faq4_resource>
+        </models>
+        <resources>
+            <faq_setup>
+                <setup>
+                    <module>Webinse_Faq4</module>
+                    <class>Webinse_Faq4_Model_Resource_Setup</class>
+                </setup>
+            </faq_setup>
+        </resources>
+        <blocks>
+            <webinse_faq4>
+                <class>Webinse_Faq4_Block</class>
+            </webinse_faq4>
+        </blocks>
+        <helpers>
+            <webinse_faq4>
+                <class>Webinse_Faq4_Helper</class>
+            </webinse_faq4>
+        </helpers>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <webinse_faq4>
+                    <file>webinse_faq4.xml</file>
+                </webinse_faq4>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+         <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <webinse_faq4 before="Mage_Adminhtml">Webinse_Faq4_Adminhtml</webinse_faq4>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -1,0 +1,50 @@
+<?php
+/**
+ * Webinse
+ *
+ * PHP Version 5.6.23
+ *
+ * @category    Webinse
+ * @package     Webinse_Faq3
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+/**
+ * Template for view all FAQ
+ *
+ * @category    Webinse
+ * @package     Webinse_Faq3
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+/**
+ * @var $this Webinse_Faq3_Block_Faq
+ */
+?>
+<?php $helper = Mage::helper('webinse_faq3/data'); ?>
+<?php $collection = $this->getAllFaq() ?>
+
+<h1><?php echo $helper->__('Frequently Asked Questions'); ?></h1>
+<hr>
+<?php if ($collection->getSize()): ?>
+
+    <?php foreach($collection as $item): ?>
+
+        <div class="faq_row">
+            <?php echo '<span>' . $item->getQuestion() . '</span> | '; ?>
+            <?php echo '<span>' . $item->getAnswer() . '</span> | '; ?>
+            <?php echo '<span>' . $item->getDate() . '</span> | '; ?>
+            
+            <a class="webinse-faq3-update" href="<?php echo Mage::getUrl('faq3/index/editFaqById/id/' . $item->getId()); ?>">edit</a> | 
+            <a class="webinse-faq3-remove" href="<?php echo Mage::getUrl('faq3/index/delete/id/' . $item->getId()); ?>">remove</a>
+            <hr>
+        </div>
+
+    <?php endforeach; ?>
+
+<?php endif; ?>
+
+<a class="webinse-faq3-add" href="<?php echo Mage::getUrl('faq3/index/addNewFaq'); ?>">add new faq</a>
+

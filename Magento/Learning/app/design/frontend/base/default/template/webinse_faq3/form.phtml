@@ -1,0 +1,68 @@
+<?php
+/**
+ * Webinse
+ *
+ * PHP Version 5.6.23
+ *
+ * @category    Webinse
+ * @package     Webinse_Faq3
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+/**
+ * Template for add/edit FAQ item
+ *
+ * @category    Webinse
+ * @package     Webinse_Faq3
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+/**
+ * @var $this Webinse_Faq3_Block_Faq
+ */
+?>
+<?php $helper = Mage::helper('webinse_faq3'); ?>
+<?php $item = $this->getFaqById() ?>
+
+<form action="<?php echo Mage::getUrl('webinse_faq3/index/save'); ?>" method="post" id="form-validate">
+    <h2 class="legend">
+        <?php if ($item->getId()): ?>
+			<?php $id = $item->getId(); ?>
+            <?php $question = $item->getQuestion(); ?>
+            <?php $answer = $item->getAnswer(); ?>
+            <?php echo $title = $helper->__('Edit FAQ') ?>
+        <?php else: ?>
+            <?php echo $title = $helper->__('Add FAQ') ?>
+        <?php endif; ?>
+    </h2>
+    <ul class="form-list">
+        <li class="wide">
+            <label for="question" class="required"><em>*</em><?php echo $helper->__('Question') ?></label>
+            <div class="input-box">
+                <input type="text" name="question" value="<?php echo  $question ? $question : ''; ?>" title="<?php echo $helper->__('Question') ?>" class="input-text required-entry" />
+            </div>
+        </li>
+        <li class="wide">
+            <label for="answer" class="required"><em>*</em><?php echo $helper->__('Answer') ?></label>
+            <div class="input-box">
+                <input type="text" name="answer" value="<?php echo $answer ? $answer : ''; ?>" title="<?php echo $helper->__('Answer') ?>" class="input-text required-entry" />
+            </div>
+        </li>
+        <li class="wide">
+            <input type="hidden" name="id" value="<?php echo  $id ? $id : ''; ?>"/>
+            <button type="submit" title="add" class="button btn-add">
+                <span><span><?php echo $title; ?></span></span>
+            </button>
+        </li>
+    </ul>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+//]]>
+</script>
+
+

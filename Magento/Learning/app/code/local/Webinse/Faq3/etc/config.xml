@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Main config of module
+ *
+ * @category    Webinse
+ * @package     Webinse_Faq3
+ * @author      Webinse Team <info@webinse.com>
+ * @copyright   2017 Webinse Ltd. (https://www.webinse.com)
+ * @license     http://opensource.org/licenses/OSL-3.0 The Open Software License 3.0
+ */
+-->
+<config>
+    <modules>
+        <Webinse_Faq3>
+            <version>0.1.0</version>
+        </Webinse_Faq3>
+    </modules>
+    <global>
+        <models>
+            <webinse_faq3>
+                <class>Webinse_Faq3_Model</class>
+                <resourceModel>webinse_faq3_resource</resourceModel>
+            </webinse_faq3>
+            <webinse_faq3_resource>
+                <class>Webinse_Faq3_Model_Resource</class>
+                <entities>
+                    <faq>
+                        <table>webinse_faq3</table>
+                    </faq>
+                </entities>
+            </webinse_faq3_resource>
+        </models>
+        <blocks>
+            <webinse_faq3>
+                <class>Webinse_Faq3_Block</class>
+            </webinse_faq3>
+        </blocks>
+        <helpers>
+            <webinse_faq3>
+                <class>Webinse_Faq3_Helper</class>
+            </webinse_faq3>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <webinse_faq3>
+                <use>standard</use>
+                <args>
+                    <module>Webinse_Faq3</module>
+                    <frontName>webinse_faq3</frontName>
+                </args>
+            </webinse_faq3>
+        </routers>
+        <layout>
+            <updates>
+                <webinse_faq3>
+                    <file>webinse_faq3.xml</file>
+                </webinse_faq3>                
+            </updates>
+        </layout>
+    </frontend>
+</config>
